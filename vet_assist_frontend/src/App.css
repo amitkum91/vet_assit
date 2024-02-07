@@ -1,0 +1,149 @@
+ *, ::before, ::after{box-sizing: border-box; margin: 0; padding: 0;}
+body{font: 400 1rem/1.5 sans-serif;}
+body{
+    margin : 0;
+    padding : 0;
+    box-sizing : border-box;
+    background-color: blueviolet;
+} 
+.header{
+  display: grid;
+  grid-template-columns: 716px 716px;
+  /* grid-gap: 1px; */
+  background-color: red; 
+  /* padding: 10px; */
+  width: 1550px;
+  height : 557px
+}
+
+.header > div:first-child {
+  background-color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  /* padding: 20px 0; */
+  font-size: 30px;
+  height : 511px;
+}
+
+.container_login{
+  grid-column: 1;
+  width: 489px;
+  height : fit-content
+}
+.loginbox{
+  display: grid;
+  grid-template-columns: 358px 358px;
+  display:grid;
+} 
+
+.container_login1{
+  display: grid;
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
+
+.content_section{
+  display: grid;
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 2;
+  grid-row-end: 3;
+}
+
+.footer{
+  background-color:#43C6DB;
+  padding: 10px;
+  /* width: 1825px; */
+  width: 1550px;
+  height : 185px;
+  grid-template-columns: 100px 100px;
+  display:grid;
+}
+
+/* .contentfooter{
+  display: grid;
+  grid-template-columns: auto,auto;
+  grid-gap: 50px;
+} */
+
+/* .social{
+   width : 46px;
+   height : 46px;
+} */
+
+.footerPhone{
+  width : 145px;
+  height : 27px;
+}
+
+.footerEmail{
+  width : 218px;
+  height : 20px;
+}
+
+.list-social{
+  display: grid;
+  grid-template-columns: 100px 100px 100px;
+  grid-gap: 10px;
+  background-color: #43C6DB;
+  color:  #43C6DB;
+  padding : 0px 667px;
+}
+.contactfooter{
+  display: grid;
+  grid-template-columns: 100px 100px 100px 100px 100px;
+  grid-gap: 10px;
+  background-color: #43C6DB;
+  color:  #43C6DB;
+  padding : 0px 713px;
+}
+.footerPhone{
+  display: grid;
+  grid-column-start: 4;
+  grid-column-end: 5;
+  grid-row-start: 4;
+  grid-row-end: 5;
+  width: 122px;
+  /* height: 27px; */
+  color: white;
+  font-size: 12px;
+}
+.footerEmail{
+  display: grid;
+  grid-column-start: 5;
+  grid-column-end: 6;
+  grid-row-start: 5;
+  grid-row-end: 6;
+  width: 46px;
+  /* height: 20px; */
+  color: white;
+  font-size: 12px;
+}
+.social{
+  display: grid;
+  grid-column-start: 1;
+  grid-column-end: 1;
+  grid-row-start: 1;
+  grid-row-end: 2;
+  width: 46px;
+  height: 46px;
+}
+.social1{
+  display: grid;
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 2;
+  width: 46px;
+  height: 46px;
+}
+.social2{
+  display: grid;
+  grid-column-start: 3;
+  grid-column-end: 4;
+  grid-row-start: 1;
+  grid-row-end: 2;
+  width: 46px;
+  height: 46px;
+}
