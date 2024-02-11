@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { NavLink, useLocation, useHistory } from "react-router-dom";
 import "../App.css";
-import homeImage from "../images/doggo.png";
+import homeImage from "../images/petregister.png";
 import vetSymbol from "../images/vetsymbol.png";
 import Footer from "./Footer";
 
@@ -27,12 +27,12 @@ function UserHome(props) {
             />
           </div> */}
           <div class="col-19">
-	            <input class="textbox-19" type="text" placeholder="User Name" required/>
+	            <input class="textbox-19" type="text" placeholder="Pet Type" required/>
 	            <span class="focus-border-19"><i></i></span>
           </div>
          
         <div class="col-19">
-	          <input class="textbox-19" type="text" placeholder="Password" required/>
+	          <input class="textbox-19" type="text" placeholder="CustomerId" required/>
 	          <span class="focus-border-19"><i></i></span> 
          </div>
           <div className="button-container">
@@ -41,14 +41,14 @@ function UserHome(props) {
               class="btn btn-primary btn-sm"
               type="submit"
             >
-              <span>Login</span>
+              <span>Register</span>
             </button>
             <button
               id="register"
               class="btn btn-primary btn-sm"
               type="submit"
             >
-              <span>Register</span>
+              <span>Appointment</span>
             </button>
           </div>
         </div>
