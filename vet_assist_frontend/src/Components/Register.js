@@ -27,22 +27,41 @@ function UserHome(props) {
             />
           </div> */}
           <div class="col-19">
-	            <input class="textbox-19" type="text" placeholder="User Name" required/>
+	            <input class="textbox-19" type="text" placeholder="Name" required/>
 	            <span class="focus-border-19"><i></i></span>
           </div>
          
         <div class="col-19">
+	          <input class="textbox-19" type="text" placeholder="User Name" required/>
+	          <span class="focus-border-19"><i></i></span> 
+         </div>
+
+         <div class="col-19">
+	          <input class="textbox-19" type="text" placeholder="Email Id" required/>
+	          <span class="focus-border-19"><i></i></span> 
+         </div>
+         
+         <div class="col-19">
 	          <input class="textbox-19" type="text" placeholder="Password" required/>
 	          <span class="focus-border-19"><i></i></span> 
          </div>
+         <div class="col-19">
+	          <input class="textbox-19" type="text" placeholder="Address" required/>
+	          <span class="focus-border-19"><i></i></span> 
+         </div>
+         <div class="col-19">
+	          <input class="textbox-19" type="text" placeholder="ZipCode" required/>
+	          <span class="focus-border-19"><i></i></span> 
+         </div>
+         <div class="col-19">
+              <select class="textbox-19" id="phone" name="phone">
+                      <option value="">select profile type</option>
+                       <option value="1">Customer</option>
+                       <option value="2">Employee</option>
+             </select>
+         </div>
           <div className="button-container">
-            <button
-              id="login"
-              class="btn btn-primary btn-sm"
-              type="submit"
-            >
-              <span>Login</span>
-            </button>
+           
             <button
               id="register"
               class="btn btn-primary btn-sm"

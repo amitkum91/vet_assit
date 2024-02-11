@@ -1,19 +1,81 @@
- *, ::before, ::after{box-sizing: border-box; margin: 0; padding: 0;}
+*, ::before, ::after{box-sizing: border-box; margin: 0; padding: 0;}
 body{font: 400 1rem/1.5 sans-serif;}
-body{
+/* body{
     margin : 0;
     padding : 0;
     box-sizing : border-box;
-    background-color: blueviolet;
-} 
+    background-color: rgb(244, 244, 244);
+}  */
 .header{
   display: grid;
   grid-template-columns: 716px 716px;
   /* grid-gap: 1px; */
-  background-color: red; 
+  /* background-color: red;  */
   /* padding: 10px; */
-  width: 1550px;
+  width: 1515px;
   height : 557px
+}
+
+.header-payment{
+  display: grid;
+  grid-template-columns: 716px 716px;
+  /* grid-gap: 1px; */
+  /* background-color: red;  */
+  /* padding: 10px; */
+  width: 1515px;
+  height : 1515px
+}
+.header-phyHomePage{
+  display: grid;
+  grid-template-columns: 378px 378px 378px 378px;
+  width: 1515px;
+  height : 1515px
+
+}
+
+
+.loginbox-payment1{
+  display: grid;
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 2;
+  grid-row-end: 3;
+  padding-bottom: 142px;
+  padding-left: 586px;
+  padding-top: 43px;
+}
+
+.loginbox-physician1{
+  display: grid;
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 1;
+  grid-row-end: 2;
+  padding-bottom: 142px;
+  padding-left: 586px;
+  padding-top: 43px;
+}
+
+.loginbox-physician2{
+  display: grid;
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 2;
+  grid-row-end: 3;
+  padding-bottom: 142px;
+  padding-left: 586px;
+  padding-top: 43px; 
+}
+
+
+
+.loginbox-payment2{
+  display: grid;
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 2;
+  grid-row-end: 3;
+  padding-top: 202px;
 }
 
 .header > div:first-child {
@@ -31,9 +93,14 @@ body{
 }
 .loginbox{
   display: grid;
-  grid-template-columns: 358px 358px;
+  grid-template-columns: 140px 140px;
   display:grid;
 } 
+.loginbox_appointment{
+  display: grid;
+  grid-template-columns: 140px 440px;
+  display:grid;
+}
 
 .container_login1{
   display: grid;
@@ -55,8 +122,8 @@ body{
   background-color:#43C6DB;
   padding: 10px;
   /* width: 1825px; */
-  width: 1550px;
-  height : 185px;
+  width: 1535px;
+  height : 235px;
   grid-template-columns: 100px 100px;
   display:grid;
 }
@@ -146,4 +213,146 @@ body{
   grid-row-end: 2;
   width: 46px;
   height: 46px;
+}
+.col-19 {
+	display: inline-block;
+	position: relative;
+}
+
+.flex-container{
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+.col-20 {
+  /* background-color: #f1f1f1;
+  margin: 10px;
+  padding: 20px;
+  font-size: 30px;
+  display: flex;
+  flex-wrap: wrap; */
+  display: inline-block;
+	position: relative;
+  
+}
+.textbox-19 {
+	padding: 2px 4px;
+	font-size: 14px;
+	color: #333;
+	width: 275px;
+	height: 30px;
+	letter-spacing: 1px;
+	border: 1px solid #ccc;
+	transition: 0.4s;
+	outline: none;
+  color: #ADD8E6;
+}
+.textbox-19 ~ .focus-border-19:before,
+.textbox-19 ~ .focus-border-19:after {
+	content: "";
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 0;
+	height: 2px;
+	background-color: #3399FF;
+	transition: 0.2s;
+	transition-delay: 0.2s;
+}
+.textbox-19 ~ .focus-border-19:after {
+	top: auto;
+	bottom: 0;
+	right: auto;
+	left: 0;
+	transition-delay: 0.6s;
+}
+.textbox-19 ~ .focus-border-19 i:before,
+.textbox-19 ~ .focus-border-19 i:after {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 2px;
+	height: 0;
+	background-color: #3399FF;
+	transition: 0.2s;
+}
+.textbox-19 ~ .focus-border-19 i:after {
+	left: auto;
+	right: 0;
+	top: auto;
+	bottom: 0;
+	transition-delay: 0.4s;
+}
+.textbox-19:focus ~ .focus-border-19:before,
+.textbox-19:focus ~ .focus-border-19:after {
+	width: 100%;
+	transition: 0.2s;
+	transition-delay: 0.6s;
+}
+.textbox-19:focus ~ .focus-border-19:after {
+	transition-delay: 0.2s;
+}
+.textbox-19:focus ~ .focus-border-19 i:before,
+.textbox-19:focus ~ .focus-border-19 i:after {
+	height: 100%;
+	transition: 0.2s;
+}
+.textbox-19:focus ~ .focus-border-19 i:after {
+	transition-delay: 0.4s;
+}
+.btn-primary {
+  color: #6495ED;
+  background-color:#87CEFA;
+  border-color: #2e6da4;
+}
+#login.btn.btn-primary.btn-sm{
+  height : 30px;
+}
+
+#register.btn.btn-primary.btn-sm{
+  height : 30px;
+}
+
+.span{
+  font-size : 10px;
+  text-shadow: 3px 4px 5px #000;
+}
+
+.container_footersymbol{
+  width : 230px;
+  height : 100px;
+  background-color: #43C6DB;
+}
+
+
+
+.focus-appointment-191{
+  font-size: small;
+  padding-right: 83px;
+  -webkit-text-fill-color: white; /* Will override color (regardless of order) */
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #6495ED;
+}
+.focus-appointment-192{
+  font-size: small;
+  padding-right: 83px;
+  -webkit-text-fill-color: white; /* Will override color (regardless of order) */
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #6495ED;
+}
+.focus-appointment-193{
+  font-size: small;
+  padding-right: 83px;
+  -webkit-text-fill-color: white; /* Will override color (regardless of order) */
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color:#6495ED
+}
+.focus-appointment-194{
+  font-size: small;
+  padding-right: 102px;
+  -webkit-text-fill-color: white; /* Will override color (regardless of order) */
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #6495ED;
 }

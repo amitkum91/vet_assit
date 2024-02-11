@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { NavLink, useLocation, useHistory } from "react-router-dom";
 import "../App.css";
-import homeImage from "../images/doggo.png";
+import homeImage from "../images/mobile.png";
 import vetSymbol from "../images/vetsymbol.png";
 import Footer from "./Footer";
 
@@ -27,22 +27,23 @@ function UserHome(props) {
             />
           </div> */}
           <div class="col-19">
-	            <input class="textbox-19" type="text" placeholder="User Name" required/>
+	            <input class="textbox-19" type="text" placeholder="Date" required/>
 	            <span class="focus-border-19"><i></i></span>
           </div>
          
         <div class="col-19">
-	          <input class="textbox-19" type="text" placeholder="Password" required/>
+	          <input class="textbox-19" type="text" placeholder="Time" required/>
 	          <span class="focus-border-19"><i></i></span> 
          </div>
+         <div class="col-19">
+              <select class="textbox-19" id="phone" name="phone">
+                      <option value="">select Physician</option>
+                       <option value="1">Dr. A</option>
+                       <option value="2">Dr. B</option>
+             </select>
+         </div>
           <div className="button-container">
-            <button
-              id="login"
-              class="btn btn-primary btn-sm"
-              type="submit"
-            >
-              <span>Login</span>
-            </button>
+           
             <button
               id="register"
               class="btn btn-primary btn-sm"
