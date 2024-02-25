@@ -10,9 +10,9 @@ import '../App.css';
 
 const Home = () => {
   return (
-  // <div className='header'><HomePage/></div>
+  <div className='header'><HomePage/></div>
   //<div className='header'><Register/></div>
-  <div className='header'><PetRegister/></div>
+  //<div className='header'><PetRegister/></div>
   //<div className='header'><PhysicianAppoinment/></div>
   //<div className='header'><Payment/></div>
   //<div className='header'><Appointment/></div>

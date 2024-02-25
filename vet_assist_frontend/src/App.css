@@ -356,3 +356,8 @@ body{font: 400 1rem/1.5 sans-serif;}
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: #6495ED;
 }
+
+.error {
+  color: red;
+  font-size: 12px;
+}
