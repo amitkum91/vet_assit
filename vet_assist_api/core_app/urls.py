@@ -16,5 +16,7 @@ urlpatterns = [
     path('pet', views.CreatePet.as_view()),
     path('apmt', views.CreateApmt.as_view()),
     path('paymt', views.CreatePaymt.as_view()),
-    path('docreg', views.CreateDocReg.as_view())
+    path('docreg', views.CreateDocReg.as_view()),
+    path("new-order", views.new_order),
+    path("callback", views.order_callback)
 ]
