@@ -55,8 +55,9 @@ function PhysicianAppointment(props) {
 
     const pet_owner_id = cust_id;
     //const doctor_id = cust_id;
-    const doctor_id = 15;
-    const blog = { pet_id,pet_owner_id, apmt_datetime,doctor_id, department,consultation_fee };
+    const doctor_id = 1;
+    const pet_id = 1;
+    const blog = {pet_id , pet_owner_id, apmt_datetime,doctor_id, department,consultation_fee };
     
         setIsSubmitted(true);
         fetch("http://localhost:8000/api/apmt", {

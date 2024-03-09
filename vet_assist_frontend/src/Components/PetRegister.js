@@ -5,17 +5,17 @@ import homeImage from "../images/petregister.png";
 import vetSymbol from "../images/vetsymbol.png";
 import Footer from "./Footer";
 import PhysicianAppointment from './PhysicianAppointment';
+import { useRef } from 'react';
 
 function PetRegister(props) {
   const location = useLocation();
+  const isHome = useRef(false);
   const history = useHistory();
-  const [isHome, setIsHome] = useState(false);
   useEffect(() => {
       console.log(location.pathname); // result: '/secondpage'
       console.log(location.state); // result: 'some_value'
   }, [location]);
-  //console.log("useffect cust_id:::",location.state.state.userName);
-  const [cust_id, setCustId] = useState(location.state.state.userName);
+  const [cust_id, setCustId] = useState(location.state.state.cust_id);
   const [pet_kind, setPetKind] = useState("");
   const [pet_age, setPetAge] = useState("");
   const [pet_weight, setPetWeight] = useState("");
@@ -23,39 +23,26 @@ function PetRegister(props) {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isPetRegistered, setIsPetRegistered] = useState(false);
   const [isAppointment, setIsAppointment] = useState(false);
-  //const [pet_id, setPetId] = useState(String(Date.now().toString(32) + Math.random().toString(16).replace(/\./g,"")));
-  const [pet_id, setPetId] = useState("");
+  const [pet_id, setPetId] = useState(Date.now());
+
   
   const handleSubmit = (event) => {
-    const date = new Date();
-    ///checking if user exists
-    const userData = fetch("http://localhost:8000/api/pet")
+    isHome.current = false;
+    const blog = { cust_id,pet_id };
+    fetch("http://localhost:8000/api/petreg", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(blog),
+        })
     .then((response) => {
       return response.json();
     })
     .then((data) => {
-      if(data && data.length > 0){
-      data.map((item) => {
-        // if (item.cust_name === cust_name) {
-        //   setErrorMessages({ name: "uname", message: errors.loginMsg });
-        //   setIsHome(false);
-        //   setIsSubmitted(false);
-        //   //alert("user already exists");
-        //   return;
-        // } else {
-          setIsHome(true);
-       // }
-      });
-    }else{
-      setIsHome(true);
-    }
-    })
-    console.log("pet_id:::",pet_id);
-    const blog = { pet_id,pet_kind, pet_age,pet_weight, pet_sex };
-
-
-      if (isHome) {
+      if(data){
+      isHome.current = true;
+      if (isHome.current) {
         setIsSubmitted(true);
+        const blog = { pet_id,pet_kind, pet_age,pet_weight, pet_sex };
         fetch("http://localhost:8000/api/pet", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -65,28 +52,15 @@ function PetRegister(props) {
             return response.json();
           })
           .then((data) => {
-            console.log("data to enter", data);
-            const petId = pet_id;
-            const cust_id = location.state.state.cust_id;
-            console.log("data to enter::pet_id", pet_id);
-            console.log("data to enter::cust_id", cust_id);
-            const petRegData = {cust_id,pet_id};
-            console.log("petRegData::::",petRegData);
-                  fetch("http://localhost:8000/api/petreg", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify(petRegData),
-                  })
-                    .then((response) => {
-                      setIsPetRegistered(true);
-                      return response.json();
-                    })
-                    .then((data) => {
-                      setIsPetRegistered(true);
-                      console.log("data to enter", data);
-                    });
+          
+          }).catch((error) => {
+            console.log("error for pet:::::second api call",error)
           });
       }
+    }
+    }).catch((error) => {
+      console.log("error for pet:::::first api call",error)
+    }); 
 }
 
 const handleAppointment = (event) => {
@@ -99,23 +73,14 @@ const handleAppointment = (event) => {
 }
 
   useEffect(() => {
-    if (isHome && isSubmitted) {
-    //  setErrorMessages({});
-      alert("Account created successfully.");
-      // history.push("/", {
-      //   replace: true,
-      //   state: { userName: cust_name, registeredFlag: "registerFlag" },
-      // });
+    if (isHome.current && isSubmitted) {
+      alert("Pet account created successfully.");
     }
   }, [isSubmitted]);
-  // const renderErrorMessage = (name) => {
-  //   // name === errorMessages.name && (
-  //     <div className="error">{errorMessages.message}</div>
-  //   //);
-  // };
+ 
   return (
-    <div className="header">
    
+    <div className="header">
     <img src={homeImage} class="container_login" alt="Norway"/>
     <div className="loginbox">
     <img src={vetSymbol} className="container_login1" alt="Norway"/>
@@ -158,11 +123,14 @@ const handleAppointment = (event) => {
               id="appointment"
               class="btn btn-primary btn-sm"
               type="submit"
-              onClick={(e) => {
-                handleAppointment(e);
-              }}
+              onClick={(e) => history.push({
+                pathname: '/bookApmt',
+                state: { cust_id: cust_id}
+            }
+            )
+            }
             >
-              <span>Appointment</span>
+              <span>Book Appointment</span>
             </button>
           </div>
         </div>

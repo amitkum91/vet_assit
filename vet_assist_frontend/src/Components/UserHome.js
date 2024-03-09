@@ -15,6 +15,8 @@ function UserHome(props) {
   const [password, setPassword] = useState("");
   const [userName, setUserName] = useState("");
   const [cust_id, setCustId] = useState("");
+  const [profileType, setProfileType] = useState("");
+  const [logintype, setLoginType] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const errors = {
@@ -23,9 +25,9 @@ function UserHome(props) {
     registerUser: "PLEASE REGISTER YOURSELF!"
   };
   const handleSubmit = (event) => {
-  
     //Prevent page reload
     event.preventDefault();
+    if(logintype === "1"){
     const userData = fetch("http://localhost:8000/api/custlogin")
       .then((response) => {
         return response.json();
@@ -35,19 +37,49 @@ function UserHome(props) {
         if (data && data.length > 0) {
           let newArr = data.map((item) => {
             if (userData) {
-              
-              if (item.password !== password) {
-                // Invalid password
+              if (item.password <= 6) {
                 setErrorMessages({ name: "pass", message: errors.pass });
-               
-                console.log("password:::",item.password);
-              console.log("cust_name:::",item.cust_name);
+                console.log("password ::::1");
               } else if (item.cust_name !== userName) {
                 setErrorMessages({ name: "uname", message: errors.uname });
+                console.log("cust_name ::::1");
               } else {
                 setIsSubmitted(true);
                 setCustId(item.cust_id);
-                console.log("setIsSubmitted - cust_id2:::",customerID);
+                setProfileType(item.profiletype);
+              }
+            } else {
+              // Username not found
+              console.log("userdata::::1");
+              setErrorMessages({ name: "uname", message: errors.uname });
+            }
+          });
+
+        } else {
+          setErrorMessages({ name: "uname", message: errors.registerUser });
+        }
+      })
+      .catch((error) => {
+        console.log("Login type 1 - There was a problem with the request.:::",error);
+      });
+    }else if(logintype === "2"){
+      const userData = fetch("http://localhost:8000/api/docreg")
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        if (data && data.length > 0) {
+          let newArr = data.map((item) => {
+            if (userData) {
+              if (item.password <= 6) {
+                // Invalid password
+                setErrorMessages({ name: "pass", message: errors.pass });
+              } else if (item.doc_name !== userName) {
+                setErrorMessages({ name: "uname", message: errors.uname });
+              } else {
+                setIsSubmitted(true);
+                setCustId(item.doc_id);
+                setProfileType(item.profiletype);
               }
             } else {
               // Username not found
@@ -60,24 +92,27 @@ function UserHome(props) {
         }
       })
       .catch((error) => {
-        alert("There was a problem with the request.");
+        console.log("Login type 2 - There was a problem with the request.:::",error);
       });
+    }
   };
+
   useEffect(() => {
     if (isSubmitted) {
+      if(profileType === "1"){
       history.push("/PetRegister", {
-        state: { cust_id: cust_id, userName: userName, password: password },
+        state: { cust_id: cust_id, userName: userName, password: password, profileType : profileType },
       });
-      // history.push("/PhysicianHomePage", {
-      //   state: { cust_id: cust_id, userName: userName, password: password },
-      // });
+    }else if(profileType === "2"){
+      history.push("/PhysicianHomePage", {
+        state: { cust_id: cust_id, userName: userName, password: password, profileType : profileType },
+      });
+    }
     }
   }, [isSubmitted]);
 
   const renderErrorMessage = (name) => {
-    // name === errorMessages.name && (
       <div className="error">{errorMessages.message}</div>
-    //);
   };
   return (
     <div className="header">
@@ -88,14 +123,6 @@ function UserHome(props) {
 
     <div className="content_section">
         <div className="form-container">
-          {/* <div className="input-container">
-            <label class="lbl">Username </label>
-            <input
-              type="text"
-              name="uname"
-              required
-            />
-          </div> */}
           <div class="col-19">
 	            <input class="textbox-19" type="text" placeholder="User Name"  name="uname"
               value={userName}
@@ -112,6 +139,13 @@ function UserHome(props) {
               required/>
 	          <span class="focus-border-19"><i></i></span> 
             <div className="error">{errorMessages.message}</div>
+         </div>
+         <div class="col-19">
+              <select class="textbox-19" id="logintype" name="logintype" value={logintype}  onChange={(e) => setLoginType(e.target.value)}>
+                      <option value="">select login type</option>
+                       <option value="1">Client</option>
+                       <option value="2">Employee</option>
+             </select>
          </div>
           <div className="button-container">
             <button
@@ -140,12 +174,10 @@ function UserHome(props) {
         </div>
       </div>
     </div>
-    
     <div className="footer">
          <Footer />
      </div>
     </div>
-     
   );
 }
 

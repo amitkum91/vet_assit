@@ -361,3 +361,9 @@ body{font: 400 1rem/1.5 sans-serif;}
   color: red;
   font-size: 12px;
 }
+
+#dataTable {
+  width: 100%;
+  text-align: center;
+  color: blue;
+}
