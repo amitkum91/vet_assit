@@ -1,0 +1,25 @@
+services:
+  backend: 
+    build: 
+      context: ./vet_assist_api
+      dockerfile: Dockerfile
+
+    ports:
+      - '8000:8000'
+
+    volumes:
+      - ./vet_assist_api:/app/backend
+
+  frontend:
+    build:
+      context: ./vet_assist_frontend
+      dockerfile: Dockerfile
+
+    ports:
+      - '3000:3000'
+
+    volumes:
+      - ./vet_assist_frontend:/app/frontend
+
+    depends_on:
+      - backend

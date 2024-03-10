@@ -21,7 +21,7 @@ function PhysicianHomePage(props) {
     () =>
       fetch("http://localhost:8000/api/apmt", {
         method: "GET",
-        cust_id: location.state.cust_id,
+        doc_id: location.state.cust_id,
       })
         .then((response) => {
           return response.json();
